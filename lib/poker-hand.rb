@@ -3,11 +3,15 @@
 def poker_hand (hand)
   numbers = []; suits = []
   score = 0
+  royal = [10,11,12,13,14]
 
   numbers = sorter(hand)[0]
   suits = sorter(hand)[1]
-  num_value(number_scorer(numbers))
-
+  p num_score = num_valuer(number_scorer(numbers))
+  # p suit_scorer(suits)
+  p suit_score = suit_valuer(suit_scorer(suits))
+  # output = num_score + " " + suit_score
+  # p output
 
 end
 
@@ -45,9 +49,15 @@ def number_scorer (input)
   counter
 end
 
+def suit_valuer (score)
+  if score == 25
+    return "Flush"
+  else
+    return ""
+  end
+end
 
-
-def num_value (score)
+def num_valuer (score)
   if score == 5
     return "No Hand"
   elsif score == 7
@@ -83,6 +93,6 @@ def sorter(input)
   result << suits
 end
 
-# p poker_hand(['2S', '2C', '4D', '4C', '4H'])
-p suit_scorer(['H', 'H', 'H', 'H', 'H'])
+poker_hand(['2S', '2S', '4S', '4S', '4C'])
+# p suit_scorer(['H', 'H', 'H', 'H', 'H'])
 
