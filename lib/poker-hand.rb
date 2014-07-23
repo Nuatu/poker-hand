@@ -1,18 +1,67 @@
 
 
 def poker_hand (hand)
-  values = [];  numbers = []; suits = []
+  numbers = []; suits = []
   score = 0
 
   numbers = sorter(hand)[0]
   suits = sorter(hand)[1]
+  num_value(number_scorer(numbers))
 
-  # # end
-  p numbers
-  p suits
-  p values
+
 end
 
+def suit_scorer (input)
+  counter=0
+  input.each do |value1|
+    input.each do |value2|
+      if value1 == value2
+        counter+=1
+      end
+    end
+  end
+  if counter == 5
+    if input[4] - input[0] == 4
+      counter += 7
+    end
+  end
+  counter
+end
+
+def number_scorer (input)
+  counter=0
+  input.each do |value1|
+    input.each do |value2|
+      if value1 == value2
+        counter+=1
+      end
+    end
+  end
+  if counter == 5
+    if input[4] - input[0] == 4
+      counter += 7
+    end
+  end
+  counter
+end
+
+
+
+def num_value (score)
+  if score == 5
+    return "No Hand"
+  elsif score == 7
+    return "One Pair"
+  elsif score == 9
+    return "Two Pair"
+  elsif score == 11
+    return "3 of a Kind"
+  elsif score == 12
+    return "Straight"
+  elsif score == 13
+    return "Full House"
+  end
+end
 
 def sorter(input)
   # if input[0].kind_of?(String) == true;
@@ -34,5 +83,6 @@ def sorter(input)
   result << suits
 end
 
-poker_hand(['10S', '2C', '4D', '5C', '6H'])
+# p poker_hand(['2S', '2C', '4D', '4C', '4H'])
+p suit_scorer(['H', 'H', 'H', 'H', 'H'])
 
