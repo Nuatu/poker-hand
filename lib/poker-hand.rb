@@ -1,4 +1,4 @@
-
+# program still needs Royal Flush
 
 def poker_hand (hand)
   numbers = []; suits = []
@@ -8,11 +8,12 @@ def poker_hand (hand)
   numbers = sorter(hand)[0]
   suits = sorter(hand)[1]
   num_score = num_valuer(number_scorer(numbers))
-  # p suit_scorer(suits)
   suit_score = suit_valuer(suit_scorer(suits))
 
   if num_score == "No Hand" and suit_score == "Flush"
     output = suit_score
+  elsif num_score == "Straight" and suit_score == "Flush"
+    output = num_score + " " + suit_score
   elsif num_score == "No Hand"
     output = num_score
   else
@@ -20,8 +21,6 @@ def poker_hand (hand)
   end
 
   output
-
-
 end
 
 def suit_scorer (input)
@@ -50,11 +49,6 @@ def number_scorer (input)
       end
     end
   end
-  # if counter == 11
-  #   if input[4].to_i - input[1].to_i == 0
-  #     counter += 0.5
-  #   end
-  # end
   if counter == 5
     if input[4] - input[0] == 4
       counter += 7
@@ -90,8 +84,6 @@ def num_valuer (score)
 end
 
 def sorter(input)
-  # if input[0].kind_of?(String) == true;
-  #   input[0]
   numbers = [];  suits = [];  result = []
 
   input.each do |value|
