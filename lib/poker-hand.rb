@@ -2,16 +2,27 @@
 
 def poker_hand (hand)
   numbers = []; suits = []
-  royal = [10,11,12,13,14]
+  royal = [10,"J","Q","K","A"]
   output = ""
 
   numbers = sorter(hand)[0]
   suits = sorter(hand)[1]
   num_score = num_valuer(number_scorer(numbers))
+ 
   suit_score = suit_valuer(suit_scorer(suits))
 
-  if num_score == "No Hand" and suit_score == "Flush"
+   # num_score = "Royal" : num_score = num_score 
+
+  # p royal_score
+
+  p numbers
+
+  if numbers[0] == 10 and suit_score == "Flush"
+    output = "Royal " + suit_score
+  elsif num_score == "No Hand" and suit_score == "Flush"
     output = suit_score
+  elsif num_score == "Straight" and numbers[4] == 10
+    output "Royal"
   elsif num_score == "Straight" and suit_score == "Flush"
     output = num_score + " " + suit_score
   elsif num_score == "No Hand"
@@ -21,6 +32,10 @@ def poker_hand (hand)
   end
 
   output
+end
+
+def isRoyal (input)
+
 end
 
 def suit_scorer (input)
@@ -101,8 +116,8 @@ def sorter(input)
   result << suits
 end
 
-poker_hand(['2S', '4S', '4S', '4S', '4C'])
-p poker_hand(['4S', '10S', '6S', '7S', '8C'])
+p poker_hand(['9S', '10S', '11S', '12S', '13S'])
+#p poker_hand(['4S', '10S', '6S', '7S', '8C'])
 # p suit_scorer(['H', 'H', 'H', 'H', 'H'])
-# p number_scorer(['2S', '4S', '4S', '2C', '4C'])
+#p poker_hand(['2S', '4S', '4D', '2C', '4C'])
 

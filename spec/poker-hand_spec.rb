@@ -23,8 +23,11 @@ describe('poker_hand') do
   it('returns  "Flush" if there are 5 matching suits') do
     poker_hand(['10C', '6C', '2C', '3C', '5C']).should(eq("Flush"))
   end
-  it('returns  "Flush" if there are 5 matching suits') do
+  it('returns  "Straight Flush" if there are matching suits and and numbers are consecutive') do
     poker_hand(['2C', '3C', '4C', '5C', '6C']).should(eq("Straight Flush"))
+  end
+  it('returns  "Royal Flush" if there are 5 matching suits') do
+    poker_hand(['10C', '11C', '12C', '13C', '14C']).should(eq("Royal Flush"))
   end
 end
 
